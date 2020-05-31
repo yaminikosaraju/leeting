@@ -1,0 +1,14 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        bracket_map = {"(": ")", "[": "]",  "{": "}"}
+        st =[0]
+        for i in s:
+            if i in bracket_map:
+                st.append(bracket_map[i])
+                
+            elif i == st[-1] :
+                st.pop()
+            else:
+                return False
+        return st == [0]
+    
