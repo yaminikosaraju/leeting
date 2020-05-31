@@ -1,0 +1,14 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        if(len(s) > 0):
+            uni = s[0]
+            for i in range(len(s)):
+                if(s.count(s[i]) > 1  ):
+                    if(i != len(s)-1):
+                        uni = s[i+1]
+                    else:
+                        return -1
+                else:
+                    return i
+        return -1
+        
