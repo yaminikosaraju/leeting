@@ -1,0 +1,34 @@
+class Solution:
+    def calculate(self, s: str) -> int:
+        prevop = ''
+        intarr =[]
+        currint = 0
+        s = s.replace(" ", "")
+        for i in range(len(s)):
+            if(s[i] == '*' or s[i] == '/' or s[i] == '+' or s[i] == '-'):
+                    
+                    if prevop == '*':
+                        intarr[-1] = int(currint*intarr[-1])
+                    elif prevop == '/':
+                        intarr[-1] = int(intarr[-1]/currint)
+                    elif prevop == '-':
+                        intarr.append((-1)*currint)
+                    else:
+                        intarr.append(currint)
+                    currint =0
+                    prevop = s[i]
+            else:
+                currint= 10*currint + int(s[i])
+        "last operation is left out"
+        if prevop == '*':
+                        intarr[-1] = int(currint*intarr[-1])
+        elif prevop == '/':
+                        print("DGf")
+                        print(intarr[-1],currint)
+                        intarr[-1] = int(intarr[-1]/currint)
+        elif prevop == '-':
+                        intarr.append((-1)*currint)
+        else:
+                        intarr.append(currint)     
+            
+        return sum(intarr)
